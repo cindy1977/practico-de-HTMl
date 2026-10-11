@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Academy - Dashboard</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Roboto,Arial,sans-serif;background:#e6f1f1;color:#12343b}
+header{background:#fff;display:flex;align-items:center;justify-content:space-between;padding:8px 18px;gap:16px}
+.logo{font-weight:bold;font-size:20px;color:#0f5560;line-height:1}
+.logo span{font-size:30px}
+header input{flex:1;max-width:385px;padding:10px 16px;border:1px solid #9bbcbc;border-radius:20px;background:#e8f1f1}
+nav{background:#0f5f66;display:flex;justify-content:space-around}
+nav a{color:#fff;text-decoration:none;padding:15px 40px;font-size:15px}
+nav a.active{background:#0b4a52;color:#f5a04a}
+nav a:hover{background:#13767e}
+.layout{display:flex;gap:14px;padding:16px 18px;align-items:flex-start}
+.quick{width:164px;border:1px solid #0f5f66;border-radius:6px;background:#fff;padding-bottom:10px;flex-shrink:0}
+.quick h3{margin:0 0 10px;background:#0f5f66;color:#fff;text-align:center;padding:10px;font-size:16px;font-weight:500}
+.quick a{display:block;margin:8px 10px;padding:16px 6px;border:1.5px solid #0f5f66;border-radius:6px;background:#e6f1f1;text-align:center;color:#12343b;text-decoration:none;font-weight:bold}
+.quick a.sel{background:#fde3c8;border-color:#f5a04a}
+.quick a:hover{background:#cfe6e6}
+.content{flex:1;min-width:0}
+.card{background:#fff;border:1px solid #0f5f66;border-radius:6px;margin-bottom:14px;overflow:hidden}
+.card>h3{margin:0;padding:10px 12px;background:#2a9d9a;color:#fff;font-weight:500;font-size:16px}
+.card.or>h3{background:#f5a04a;color:#12343b;font-weight:bold}
+.hero{margin:10px;height:142px;border-radius:6px;background:linear-gradient(90deg,#1b4a52,#2c6b70 60%,#7a5a3c);color:#fff;text-align:center;padding-top:36px}
+.hero h1{margin:0 0 8px;font-size:26px}
+.hero p{margin:0;font-size:14px}
+.row{display:flex;gap:14px;align-items:flex-start}
+.row .card{margin-bottom:0}
+.sched{flex:2}.reading{flex:1.1}
+table{border-collapse:collapse;margin:10px;width:calc(100% - 20px);font-size:12px}
+th{background:#0f5f66;color:#fff;text-align:left;padding:7px;border:1px solid #0f5f66}
+td{border:1px solid #0f5f66;padding:6px;background:#e8f3f3}
+td:hover{background:#d3ebeb}
+td.ok{background:#c7e6c7}td.pl{background:#fdd9b3}
+ul.t{margin:0;padding-left:16px}
+.art{display:flex;gap:8px;margin:10px;padding:8px;border:1px solid #0f5f66;border-radius:6px;font-size:11px}
+.art h4{margin:0 0 4px;font-size:15px}.art p{margin:0}
+.img{width:48px;height:62px;flex-shrink:0;border-radius:4px;background:linear-gradient(135deg,#8a6d55,#c9b08f)}
+form{padding:10px 14px 14px;display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+label{font-weight:bold;font-size:14px;display:block;margin-bottom:4px}
+input[type=text],select,textarea{width:100%;padding:8px;border:1.5px solid #0f5f66;border-radius:4px;font-size:14px}
+.full{grid-column:1/-1}
+textarea{height:80px}
+button{background:#f5a04a;color:#fff;border:0;border-radius:4px;padding:9px 18px;font-size:14px;cursor:pointer}
+button:hover{background:#e08a30}
+footer{background:#0f5f66;color:#fff;display:flex;justify-content:space-between;padding:20px 18px;font-size:14px}
+footer a{color:#fff;text-decoration:none;margin-right:18px}
+footer a:hover{text-decoration:underline}
+@media(max-width:800px){.layout,.row{flex-direction:column}.quick{width:100%}nav a{padding:12px 8px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span>🌐</span> GLOBAL<br>ACADEMY</div>
+  <input type="text" placeholder="Search...">
+  <div>▦ &nbsp; 🔔 &nbsp; 👤</div>
+</header>
+<nav>
+  <a href="#" class="active">DASHBOARD</a><a href="#">MY COURSES</a><a href="#">RESOURCES</a><a href="#">COMMUNITY</a><a href="#">HELP</a>
+</nav>
+
+<div class="layout">
+  <aside class="quick">
+    <h3>QUICK ACCESS</h3>
+    <a href="#">Announcements</a><a href="#" class="sel">Calendar Events</a><a href="#">Grades</a><a href="#">Faculty Directory</a>
+  </aside>
+
+  <main class="content">
+    <section class="card">
+      <h3>LEARNING HUB</h3>
+      <div class="hero"><h1>WELCOME BACK</h1><p>Join your bank at learning and tips in the motivational.<br>and get into your community truth.</p></div>
+    </section>
+
+    <div class="row">
+      <section class="card or sched">
+        <h3>COURSE SCHEDULE</h3>
+        <table>
+          <tr><th>Module</th><th>Topic</th><th>Instructor</th><th>Date</th><th>Status</th></tr>
+          <tr><td rowspan="2">Module 1</td><td><ul class="t"><li>Learning &amp; Profession Courses</li></ul></td><td>John B.B.</td><td>8/12/2024</td><td class="ok">Complete</td></tr>
+          <tr><td><ul class="t"><li>Explorement Learning</li></ul></td><td>BerniMant</td><td>3/11/2024</td><td class="ok">Complete</td></tr>
+          <tr><td></td><td><ul class="t"><li>Summary Learning</li></ul></td><td>Jimr F.</td><td>1/12/2024</td><td class="pl">Complete</td></tr>
+          <tr><td rowspan="2">Module 2</td><td><ul class="t"><li>Student Schedule</li></ul></td><td>Geman S.</td><td>8/12/2024</td><td class="ok">Success</td></tr>
+          <tr><td><ul class="t"><li>Developmental Learning</li></ul></td><td>Flaschhster</td><td>0/12/2024</td><td class="pl">Success</td></tr>
+          <tr><td></td><td><ul class="t"><li>Social Learning</li><li>Designs &amp; communicities</li></ul></td><td>Mariv W.</td><td>8/12/2024</td><td class="pl">Plan</td></tr>
+          <tr><td></td><td><ul class="t"><li>Summary Schedule</li></ul></td><td>Jims A.</td><td>0/13/2024</td><td class="pl">Plan</td></tr>
+          <tr><td rowspan="3">Module 3</td><td><ul class="t"><li>Student Learning</li></ul></td><td>Marw M.</td><td>9/12/2024</td><td class="ok">Complete</td></tr>
+          <tr><td><ul class="t"><li>Complete Learning</li></ul></td><td>Geman S.</td><td>0/12/2024</td><td class="ok">Success</td></tr>
+          <tr><td><ul class="t"><li>Developmental Learning</li></ul></td><td>Flaschhster</td><td>9/13/2024</td><td class="pl">Success</td></tr>
+        </table>
+      </section>
+
+      <section class="card or reading">
+        <h3>RECOMMENDED READING</h3>
+        <article class="art"><div class="img"></div><div><h4>Recommended Articles</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, immocant dis toars and mendal wikinta nulalerating conteept.</p></div></article>
+        <article class="art"><div class="img"></div><div><h4>Fast Fittine Becoming Articles</h4><p>Foiloniengisigmiler commants authnienitaries and inscium personaded oraids, saic at compandus card the-tingruml.</p></div></article>
+        <article class="art"><div class="img"></div><div><h4>Recommended Articles</h4><p>Lorem ipsum dolor sit amet, consectetur senior aricultural artich comver an exinecate fert menting portiones.</p></div></article>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:14px">
+      <h3>FEEDBACK &amp; SUPPORT</h3>
+      <form action="#" method="post" aria-label="Feedback and support">
+        <div><label for="subject">Subject *</label><input type="text" id="subject" name="subject" required></div>
+        <div><label for="category">Category *</label>
+          <select id="category" name="category" required><option value="">Select Category</option><option>Comment</option><option>Query</option><option>Support request</option></select></div>
+        <div class="full"><label for="message">Your Message *</label><textarea id="message" name="message" required minlength="10"></textarea></div>
+        <div class="full"><button type="submit">Send</button></div>
+      </form>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div><a href="#">About Us</a><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Contact</a></div>
+  <div>© 2024 GLOBAL ACADEMY</div>
+</footer>
+</body>
+</html>
