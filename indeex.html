@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --c-50:  #EAF3FB;
+      --c-100: #C3DCF4;
+      --c-200: #9CC6EC;
+      --c-300: #76AFE5;
+      --c-400: #4F99DE;
+      --c-500: #2881D4;
+      --c-600: #216BB0;
+      --c-700: #1A5389;
+      --c-800: #133C63;
+      --c-900: #0B253C;
+      --c-950: #040D15;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--c-50);
+      color: var(--c-900);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      background-color: var(--c-700);
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo { display: flex; align-items: center; gap: 10px; color: #fff; }
+    .logo-icon { width: 36px; height: 36px; }
+    .logo-text strong { font-size: 14px; font-weight: 700; letter-spacing: 2px; display: block; }
+    .logo-text span { font-size: 11px; font-weight: 600; letter-spacing: 2px; opacity: 0.85; display: block; }
+
+    .search-bar {
+      background: #fff;
+      border-radius: 20px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 300px;
+    }
+
+    .search-bar input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 16px; color: #fff; }
+
+    .notif-badge { position: relative; cursor: pointer; }
+    .notif-badge .dot {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 8px;
+      height: 8px;
+      background-color: var(--c-400);
+      border-radius: 50%;
+    }
+
+    .user-profile { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: var(--c-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== NAV BAR ===== */
+    .nav-bar {
+      background-color: var(--c-700);
+      padding: 0 30px;
+      display: flex;
+    }
+
+    .nav-bar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 12px 20px;
+      opacity: 0.7;
+      transition: all 0.2s;
+      cursor: pointer;
+      display: block;
+    }
+
+    .nav-bar a:first-child {
+      opacity: 1;
+      background-color: rgba(79, 153, 222, 0.2);
+      border-bottom: 3px solid var(--c-400);
+    }
+
+    .nav-bar a:hover { opacity: 1; }
+
+    /* ===== MAIN WRAPPER ===== */
+    .main-wrapper { display: flex; gap: 20px; padding: 20px 30px; flex: 1; }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar { width: 200px; flex-shrink: 0; }
+
+    .sidebar-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--c-200);
+    }
+
+    .sidebar-header {
+      background-color: var(--c-700);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 10px 16px;
+    }
+
+    .sidebar-body {
+      background-color: var(--c-50);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-btn {
+      background: #fff;
+      border: 1px solid var(--c-200);
+      border-radius: 20px;
+      padding: 9px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      color: var(--c-900);
+      transition: all 0.2s;
+    }
+
+    .sidebar-btn:hover { border-color: var(--c-400); color: var(--c-400); }
+
+    .sidebar-btn.active {
+      background: var(--c-100);
+      border-color: var(--c-400);
+      color: var(--c-400);
+    }
+
+    /* ===== CONTENT ===== */
+    .content { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+
+    /* ===== HERO ===== */
+    .hero-card {
+      background: linear-gradient(135deg, var(--c-700), var(--c-500));
+      border-radius: 14px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-label {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--c-700);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .hero-text { color: #fff; z-index: 1; }
+    .hero-text h2 { font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+    .hero-text p { font-size: 13px; opacity: 0.85; line-height: 1.6; max-width: 420px; }
+
+    /* ===== MIDDLE GRID ===== */
+    .middle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid var(--c-200);
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: var(--c-400);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 12px 18px;
+    }
+
+    .card-body { padding: 14px; background: #fff; }
+
+    /* ===== TABLE ===== */
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+
+    table thead th {
+      background: var(--c-700);
+      color: #fff;
+      font-weight: 600;
+      text-align: left;
+      padding: 8px 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    table thead th:first-child { border-radius: 8px 0 0 0; }
+    table thead th:last-child { border-radius: 0 8px 0 0; }
+
+    table tbody td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--c-100);
+      vertical-align: middle;
+      color: var(--c-800);
+    }
+
+    table tbody tr:last-child td { border-bottom: none; }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .badge-success { background: var(--c-200); color: var(--c-700); }
+    .badge-plan    { background: var(--c-100); color: var(--c-600); }
+
+    /* ===== READING ===== */
+    .reading-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--c-100);
+    }
+
+    .reading-item:last-child { border-bottom: none; }
+
+    .reading-thumb {
+      width: 70px;
+      height: 55px;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .reading-content h4 { font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--c-800); }
+
+    .reading-lines { display: flex; flex-direction: column; gap: 3px; margin-top: 4px; }
+    .reading-lines span { height: 5px; background: var(--c-100); border-radius: 3px; }
+    .reading-lines span:nth-child(2) { width: 85%; }
+    .reading-lines span:nth-child(3) { width: 70%; }
+    .reading-lines span:nth-child(4) { width: 90%; }
+
+    /* ===== FEEDBACK FORM ===== */
+    .feedback-section { margin: 0 30px 20px 30px; }
+
+    .feedback-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid var(--c-200);
+      overflow: hidden;
+    }
+
+    .feedback-header {
+      background: var(--c-700);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feedback-header::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--c-400);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .feedback-body { background: var(--c-50); padding: 20px; }
+
+    .form-row { display: flex; gap: 16px; margin-bottom: 16px; }
+    .form-group { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { margin-bottom: 16px; }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--c-800);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--c-200);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      background: #fff;
+      color: var(--c-800);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus { border-color: var(--c-500); }
+    .form-control::placeholder { color: var(--c-300); }
+
+    textarea.form-control { min-height: 100px; resize: vertical; }
+
+    select.form-control {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2376AFE5' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+      padding-right: 36px;
+    }
+
+    .btn-send {
+      background: var(--c-400);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 11px 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-send:hover { background: var(--c-500); }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--c-700);
+      padding: 14px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+      cursor: pointer;
+    }
+    .footer-links a:hover { opacity: 1; }
+
+    .footer-copy { font-size: 12px; opacity: 0.7; display: flex; align-items: center; gap: 6px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .main-wrapper { flex-direction: column; }
+      .sidebar { width: 100%; }
+      .middle-grid { grid-template-columns: 1fr; }
+      .form-row { flex-direction: column; }
+      .footer { flex-direction: column; gap: 10px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="17" stroke="#76AFE5" stroke-width="2.5"/>
+        <ellipse cx="20" cy="20" rx="8" ry="17" stroke="#fff" stroke-width="1.5"/>
+        <line x1="3" y1="20" x2="37" y2="20" stroke="#fff" stroke-width="1.5"/>
+        <path d="M5 12 Q20 14 35 12" stroke="#76AFE5" stroke-width="1.5" fill="none"/>
+        <path d="M5 28 Q20 26 35 28" stroke="#76AFE5" stroke-width="1.5" fill="none"/>
+      </svg>
+      <div class="logo-text">
+        <strong>GLOBAL</strong>
+        <span>ACADEMY</span>
+      </div>
+    </div>
+    <div class="search-bar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--c-600)" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input type="text" placeholder="Search...">
+    </div>
+    <div class="header-right">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      <div class="notif-badge">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+        <div class="dot"></div>
+      </div>
+      <div class="user-profile">
+        <div class="avatar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--c-700)">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+        </div>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV BAR -->
+  <nav class="nav-bar">
+    <a>Dashboard</a>
+    <a>My Courses</a>
+    <a>Resources</a>
+    <a>Community</a>
+    <a>Help</a>
+  </nav>
+
+  <!-- MAIN WRAPPER -->
+  <div class="main-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-header">Quick Access</div>
+        <div class="sidebar-body">
+          <button class="sidebar-btn">Announcements</button>
+          <button class="sidebar-btn active">Calendar Events</button>
+          <button class="sidebar-btn">Grades</button>
+          <button class="sidebar-btn">Faculty Directory</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- HERO -->
+      <div class="hero-card">
+        <div class="hero-label">Learning Hub</div>
+        <div class="hero-text">
+          <h2>Welcome Back</h2>
+          <p>Join your bank at e-learning and lips in the motivational. and get into your community truth.</p>
+        </div>
+      </div>
+
+      <!-- MIDDLE GRID -->
+      <div class="middle-grid">
+
+        <!-- COURSE SCHEDULE -->
+        <div class="card">
+          <div class="card-header">Course Schedule</div>
+          <div class="card-body" style="padding:0; overflow-x:auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Module</th>
+                  <th>Topic</th>
+                  <th>Instructor</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Learning &amp; Profession Courses</td>
+                  <td>Mr. Smith</td>
+                  <td>2024-01-15</td>
+                  <td><span class="badge badge-success">Complete</span></td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Explorement / Learning</td>
+                  <td>Ms. Johnson</td>
+                  <td>2024-01-22</td>
+                  <td><span class="badge badge-success">Complete</span></td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Summary Learning</td>
+                  <td>Ms. Johnson</td>
+                  <td>2024-01-29</td>
+                  <td><span class="badge badge-success">Complete</span></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Student Schedule</td>
+                  <td>Mr. Smith</td>
+                  <td>2024-02-05</td>
+                  <td><span class="badge badge-success">Success</span></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Developmental Learning</td>
+                  <td>Ms. Davis</td>
+                  <td>2024-02-12</td>
+                  <td><span class="badge badge-success">Success</span></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Social Learning / Designs</td>
+                  <td>Ms. Davis</td>
+                  <td>2024-02-19</td>
+                  <td><span class="badge badge-plan">Plan</span></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Summary Schedule</td>
+                  <td>Mr. Smith</td>
+                  <td>2024-02-26</td>
+                  <td><span class="badge badge-plan">Plan</span></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Student Learning</td>
+                  <td>Ms. Johnson</td>
+                  <td>2024-03-04</td>
+                  <td><span class="badge badge-success">Complete</span></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Complete Learning</td>
+                  <td>Ms. Johnson</td>
+                  <td>2024-03-11</td>
+                  <td><span class="badge badge-success">Success</span></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Developmental Learning</td>
+                  <td>Ms. Davis</td>
+                  <td>2024-03-18</td>
+                  <td><span class="badge badge-plan">Plan</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- RECOMMENDED READING -->
+        <div class="card">
+          <div class="card-header">Recommended Reading</div>
+          <div class="card-body">
+            <div class="reading-item">
+              <div class="reading-thumb" style="background-color: #C3DCF4;"></div>
+              <div class="reading-content">
+                <h4>Recommended Articles</h4>
+                <div class="reading-lines"><span></span><span></span><span></span><span></span></div>
+              </div>
+            </div>
+            <div class="reading-item">
+              <div class="reading-thumb" style="background-color: #9CC6EC;"></div>
+              <div class="reading-content">
+                <h4>Fast Fitting Becoming Articles</h4>
+                <div class="reading-lines"><span></span><span></span><span></span><span></span></div>
+              </div>
+            </div>
+            <div class="reading-item">
+              <div class="reading-thumb" style="background-color: #76AFE5;"></div>
+              <div class="reading-content">
+                <h4>Recommended Articles</h4>
+                <div class="reading-lines"><span></span><span></span><span></span><span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FEEDBACK & SUPPORT FORM -->
+  <div class="feedback-section">
+    <div class="feedback-card">
+      <div class="feedback-header">Feedback &amp; Support</div>
+      <div class="feedback-body">
+        <form id="supportForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                class="form-control"
+                placeholder="Write the subject of your inquiry"
+                required
+              >
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select id="category" name="category" class="form-control" required>
+                <option value="" disabled selected>Select Category</option>
+                <option value="comments">Comments</option>
+                <option value="queries">Queries</option>
+                <option value="support">Technical Support</option>
+                <option value="billing">Billing</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label for="message">Your Message</label>
+            <textarea
+              id="message"
+              name="message"
+              class="form-control"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn-send">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a>About Us</a>
+      <a>Privacy Policy</a>
+      <a>Terms of Use</a>
+      <a>Contact</a>
+    </div>
+    <div class="footer-copy">
+      <svg width="10" height="10" viewBox="0 0 20 20" fill="#fff">
+        <path d="M10 0L12.5 7.5H20L14 12.5L16.5 20L10 15L3.5 20L6 12.5L0 7.5H7.5L10 0Z"/>
+      </svg>
+      &copy; 2024 GLOBAL ACADEMY
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('supportForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Formulario enviado correctamente!');
+    });
+  </script>
+
+</body>
+</html>
