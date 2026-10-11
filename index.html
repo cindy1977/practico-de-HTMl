@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Academy - Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #eaf4f3;
+      color: #1d2b2b;
+    }
+
+    /* ===== Encabezado ===== */
+    header {
+      background: #fff;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #155e5e;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 3px solid #2a9d9d;
+      position: relative;
+    }
+
+    .logo-icon::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-top: 3px solid #f4943c;
+      transform: rotate(-30deg);
+    }
+
+    .search input {
+      width: 380px;
+      max-width: 100%;
+      padding: 9px 16px;
+      border: 1px solid #b9d4d2;
+      border-radius: 20px;
+      background: #eef5f4;
+    }
+
+    .user-tools {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .user-tools button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #155e5e;
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #c9c9c9;
+    }
+
+    nav.main-nav {
+      background: #155e5e;
+    }
+
+    nav.main-nav ul {
+      display: flex;
+      list-style: none;
+      padding: 0 18px;
+    }
+
+    nav.main-nav li {
+      flex: 1;
+      text-align: center;
+    }
+
+    nav.main-nav a {
+      display: block;
+      padding: 10px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    nav.main-nav a.active {
+      background: #0e4747;
+      color: #f4943c;
+    }
+
+    nav.main-nav a:hover {
+      background: #0e4747;
+    }
+
+    /* ===== Contenido ===== */
+    .layout {
+      display: grid;
+      grid-template-columns: 165px 1fr;
+      gap: 15px;
+      padding: 16px 18px;
+    }
+
+    .panel {
+      background: #fff;
+      border: 2px solid #155e5e;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .panel>h2 {
+      background: #2a9d9d;
+      color: #fff;
+      font-size: 17px;
+      font-weight: normal;
+      padding: 9px 12px;
+      text-transform: uppercase;
+    }
+
+    .panel.orange>h2 {
+      background: #f4943c;
+      color: #1d2b2b;
+      font-weight: bold;
+    }
+
+    aside.quick-access {
+      align-self: start;
+    }
+
+    aside.quick-access ul {
+      list-style: none;
+      padding: 10px;
+      display: grid;
+      gap: 12px;
+    }
+
+    aside.quick-access a {
+      display: block;
+      padding: 18px 8px;
+      text-align: center;
+      border: 2px solid #155e5e;
+      border-radius: 4px;
+      background: #eef5f4;
+      color: #1d2b2b;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    aside.quick-access a.highlight {
+      background: #fde3cc;
+      border-color: #f4943c;
+    }
+
+    main {
+      display: grid;
+      gap: 14px;
+    }
+
+    .welcome {
+      margin: 10px;
+      padding: 40px 20px;
+      border-radius: 4px;
+      text-align: center;
+      color: #fff;
+      background-color: #1f5f62;
+      background-image: linear-gradient(rgba(21, 94, 94, 0.75), rgba(21, 94, 94, 0.75)),
+        url("https://picsum.photos/seed/estudiante/900/300");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .welcome h3 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    .middle {
+      display: grid;
+      grid-template-columns: 1fr 255px;
+      gap: 14px;
+    }
+
+    table {
+      width: calc(100% - 20px);
+      margin: 10px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th {
+      background: #155e5e;
+      color: #fff;
+      text-align: left;
+      padding: 7px;
+    }
+
+    td {
+      border: 1px solid #155e5e;
+      padding: 6px;
+      background: #f2f8f7;
+    }
+
+    td ul {
+      padding-left: 16px;
+    }
+
+    .done {
+      background: #cdebd6;
+    }
+
+    .pending {
+      background: #fbd2ab;
+    }
+
+    .reading article {
+      display: flex;
+      gap: 8px;
+      margin: 10px;
+      padding: 10px;
+      border: 2px solid #155e5e;
+      border-radius: 6px;
+    }
+
+    .reading img {
+      flex: 0 0 62px;
+      width: 62px;
+      height: 62px;
+      object-fit: cover;
+      border-radius: 4px;
+      background: #c7d9d6;
+    }
+
+    .reading h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .reading p {
+      font-size: 11px;
+    }
+
+    /* ===== Formulario ===== */
+    form {
+      padding: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      padding: 8px;
+      border: 1px solid #155e5e;
+      border-radius: 4px;
+      font: inherit;
+      font-size: 14px;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid #f4943c;
+    }
+
+    button[type="submit"] {
+      margin-top: 12px;
+      padding: 8px 34px;
+      background: #f4943c;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background: #e07e25;
+    }
+
+    /* ===== Pie de página ===== */
+    footer {
+      background: #155e5e;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      margin-top: 10px;
+    }
+
+    footer ul {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 800px) {
+
+      .layout,
+      .middle,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      nav.main-nav ul {
+        flex-wrap: wrap;
+      }
+
+      .top-bar {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== ENCABEZADO ===== -->
+  <header>
+    <div class="top-bar">
+      <a href="#" class="logo">
+        <span class="logo-icon" aria-hidden="true"></span>
+        <span>GLOBAL<br>ACADEMY</span>
+      </a>
+
+      <search class="search">
+        <input type="search" name="q" placeholder="Search..." aria-label="Search">
+      </search>
+
+      <div class="user-tools">
+        <button type="button" aria-label="Apps">&#9638;</button>
+        <button type="button" aria-label="Notifications">&#128276;</button>
+        <span class="avatar" role="img" aria-label="User profile"></span>
+      </div>
+    </div>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="#" class="active">Dashboard</a></li>
+        <li><a href="#">My Courses</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="layout">
+
+    <!-- ===== ACCESO RÁPIDO ===== -->
+    <aside class="panel quick-access" aria-labelledby="qa-title">
+      <h2 id="qa-title">Quick Access</h2>
+      <ul>
+        <li><a href="#">Announcements</a></li>
+        <li><a href="#" class="highlight">Calendar Events</a></li>
+        <li><a href="#">Grades</a></li>
+        <li><a href="#">Faculty Directory</a></li>
+      </ul>
+    </aside>
+
+    <main>
+
+      <!-- ===== LEARNING HUB ===== -->
+      <section class="panel" aria-labelledby="hub-title">
+        <h2 id="hub-title">Learning Hub</h2>
+        <div class="welcome">
+          <h3>WELCOME BACK</h3>
+          <p>Continue your learning journey and stay connected with your community.</p>
+        </div>
+      </section>
+
+      <div class="middle">
+
+        <!-- ===== HORARIO DE CURSOS ===== -->
+        <section class="panel orange" aria-labelledby="schedule-title">
+          <h2 id="schedule-title">Course Schedule</h2>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Module</th>
+                <th scope="col">Topic</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" rowspan="3"
+                  style="background:#f2f8f7;color:#1d2b2b;font-weight:normal;border:1px solid #155e5e;">Module 1</th>
+                <td>
+                  <ul>
+                    <li>Learning &amp; Profession Courses</li>
+                  </ul>
+                </td>
+                <td>John B.</td>
+                <td><time datetime="2024-08-12">8/12/2024</time></td>
+                <td class="done">Complete</td>
+              </tr>
+              <tr>
+                <td>
+                  <ul>
+                    <li>Experiential Learning</li>
+                  </ul>
+                </td>
+                <td>Bernie M.</td>
+                <td><time datetime="2024-03-11">3/11/2024</time></td>
+                <td class="done">Complete</td>
+              </tr>
+              <tr>
+                <td>
+                  <ul>
+                    <li>Summary Learning</li>
+                  </ul>
+                </td>
+                <td>Jim F.</td>
+                <td><time datetime="2024-01-12">1/12/2024</time></td>
+                <td class="pending">Complete</td>
+              </tr>
+              <tr>
+                <th scope="row" rowspan="2"
+                  style="background:#f2f8f7;color:#1d2b2b;font-weight:normal;border:1px solid #155e5e;">Module 2</th>
+                <td>
+                  <ul>
+                    <li>Student Schedule</li>
+                  </ul>
+                </td>
+                <td>Geman S.</td>
+                <td><time datetime="2024-08-12">8/12/2024</time></td>
+                <td class="done">Success</td>
+              </tr>
+              <tr>
+                <td>
+                  <ul>
+                    <li>Developmental Learning</li>
+                  </ul>
+                </td>
+                <td>Flaschner</td>
+                <td><time datetime="2024-09-12">9/12/2024</time></td>
+                <td class="pending">Success</td>
+              </tr>
+              <tr>
+                <td rowspan="2"></td>
+                <td>
+                  <ul>
+                    <li>Social Learning</li>
+                    <li>Designs &amp; Communities</li>
+                  </ul>
+                </td>
+                <td>Mary W.</td>
+                <td><time datetime="2024-08-12">8/12/2024</time></td>
+                <td class="pending">Plan</td>
+              </tr>
+              <tr>
+                <td>
+                  <ul>
+                    <li>Summary Schedule</li>
+                  </ul>
+                </td>
+                <td>Jim A.</td>
+                <td><time datetime="2024-09-13">9/13/2024</time></td>
+                <td class="pending">Plan</td>
+              </tr>
+              <tr>
+                <th scope="row" rowspan="3"
+                  style="background:#f2f8f7;color:#1d2b2b;font-weight:normal;border:1px solid #155e5e;">Module 3</th>
+                <td>
+                  <ul>
+                    <li>Student Learning</li>
+                  </ul>
+                </td>
+                <td>Mary M.</td>
+                <td><time datetime="2024-09-12">9/12/2024</time></td>
+                <td class="pending">Complete</td>
+              </tr>
+              <tr>
+                <td>
+                  <ul>
+                    <li>Complete Learning</li>
+                  </ul>
+                </td>
+                <td>Geman S.</td>
+                <td><time datetime="2024-09-12">9/12/2024</time></td>
+                <td class="done">Success</td>
+              </tr>
+              <tr>
+                <td>
+                  <ul>
+                    <li>Developmental Learning</li>
+                  </ul>
+                </td>
+                <td>Flaschner</td>
+                <td><time datetime="2024-09-13">9/13/2024</time></td>
+                <td class="pending">Success</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ===== LECTURAS RECOMENDADAS ===== -->
+        <section class="panel orange reading" aria-labelledby="reading-title">
+          <h2 id="reading-title">Recommended Reading</h2>
+          <article>
+            <img src="https://picsum.photos/seed/estudiar/120/120" alt="Students studying" width="62" height="62">
+            <div>
+              <h3>Recommended Articles</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </article>
+          <article>
+            <img src="https://picsum.photos/seed/notas/120/120" alt="Person writing notes" width="62" height="62">
+            <div>
+              <h3>Fast Fitting Becoming Articles</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </article>
+          <article>
+            <img src="https://picsum.photos/seed/lectura/120/120" alt="Student reading" width="62" height="62">
+            <div>
+              <h3>Recommended Articles</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </article>
+        </section>
+
+      </div>
+
+      <!-- ===== FORMULARIO: FEEDBACK & SUPPORT ===== -->
+      <section class="panel" aria-labelledby="feedback-title">
+        <h2 id="feedback-title">Feedback &amp; Support</h2>
+
+        <form action="#" method="post">
+          <div class="form-row">
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" maxlength="100" required>
+            </div>
+
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category" name="category" required>
+                <option value="" disabled selected>Select Category</option>
+                <option value="comment">Comment</option>
+                <option value="question">Question</option>
+                <option value="technical">Technical Support</option>
+                <option value="academic">Academic Request</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="4" minlength="10" required></textarea>
+          </div>
+
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== PIE DE PÁGINA ===== -->
+  <footer>
+    <nav aria-label="Footer navigation">
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <p><small>&copy; 2024 GLOBAL ACADEMY</small></p>
+  </footer>
+
+</body>
+
+</html>
