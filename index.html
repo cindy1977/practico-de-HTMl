@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Academy — Dashboard</title>
+</head>
+<body>
+  <header>
+    <h1>GLOBAL ACADEMY</h1>
+
+    <form action="#" method="get" role="search">
+      <label for="search">Search</label>
+      <input type="search" id="search" name="search" placeholder="Search...">
+      <button type="submit">Search</button>
+    </form>
+
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#" aria-current="page">DASHBOARD</a></li>
+        <li><a href="#">MY COURSES</a></li>
+        <li><a href="#">RESOURCES</a></li>
+        <li><a href="#">COMMUNITY</a></li>
+        <li><a href="#">HELP</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="dashboard">
+    <aside>
+      <h2>QUICK ACCESS</h2>
+      <nav aria-label="Quick access">
+        <ul>
+          <li><a href="#">Announcements</a></li>
+          <li><a href="#">Calendar Events</a></li>
+          <li><a href="#">Grades</a></li>
+          <li><a href="#">Faculty Directory</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <section class="community" aria-labelledby="hub-title">
+      <h2 class="hub-title">LEARNING HUB</h2>
+      <h3>WELCOME BACK</h3>
+      <p>Connect with your learning community and explore your courses.</p>
+    </section>
+
+    <section class="courses" aria-labelledby="schedule-title">
+      <h2 class="schedule-title">COURSE SCHEDULE</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Module</th>
+            <th scope="col">Topic</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="rowgroup" rowspan="3">Module 1</th>
+            <td>Learning &amp; Profession Courses</td>
+            <td>John B.B.</td>
+            <td>8/12/2024</td>
+            <td>Complete</td>
+          </tr>
+          <tr>
+            <td>Experimental Learning</td>
+            <td>BerniMant</td>
+            <td>3/11/2024</td>
+            <td>Complete</td>
+          </tr>
+          <tr>
+            <td>Summary Learning</td>
+            <td>Jimi F.</td>
+            <td>1/12/2024</td>
+            <td>Complete</td>
+          </tr>
+          <tr>
+            <th scope="rowgroup" rowspan="2">Module 2</th>
+            <td>Student Schedule</td>
+            <td>Geman S.</td>
+            <td>8/12/2024</td>
+            <td>Success</td>
+          </tr>
+          <tr>
+            <td>Developmental Learning</td>
+            <td>Flaschhster</td>
+            <td>0/12/2024</td>
+            <td>Success</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <ul>
+                <li>Social Learning</li>
+                <li>Designs &amp; Communities</li>
+              </ul>
+            </td>
+            <td>Mariw W.</td>
+            <td>8/12/2024</td>
+            <td>Plan</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Summary Schedule</td>
+            <td>Jims A.</td>
+            <td>0/13/2024</td>
+            <td>Plan</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Student Learning</td>
+            <td>Mariw M.</td>
+            <td>9/12/2024</td>
+            <td>Complete</td>
+          </tr>
+          <tr>
+            <th scope="rowgroup" rowspan="2">Module 3</th>
+            <td>Complete Learning</td>
+            <td>Geman S.</td>
+            <td>0/12/2024</td>
+            <td>Success</td>
+          </tr>
+          <tr>
+            <td>Developmental Learning</td>
+            <td>Flaschhster</td>
+            <td>9/13/2024</td>
+            <td>Success</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <aside class="resources" aria-labelledby="reading-title">
+      <h2 class="reading-title">RECOMMENDED READING</h2>
+
+      <article>
+        <h3>Recommended Articles</h3>
+        <p>Explore articles about learning, collaboration and academic development.</p>
+      </article>
+
+      <article>
+        <h3>Fast Fitting Becoming Articles</h3>
+        <p>Discover practical ideas to improve your study habits and learning experience.</p>
+      </article>
+
+      <article>
+        <h3>Recommended Articles</h3>
+        <p>Find additional resources to support your educational journey.</p>
+      </article>
+    </aside>
+
+    <section class="support" aria-labelledby="support-title">
+      <h2 class="support-title">FEEDBACK &amp; SUPPORT</h2>
+
+      
+      <form action="#" method="post">
+        <p>
+          <label for="subject">Subject</label><br>
+          <input type="text" id="subject" name="subject" required>
+        </p>
+
+        <p>
+          <label for="category">Category</label><br>
+          <select class="category" name="category" required>
+            <option value="" disabled selected>Select Category</option>
+            <option value="feedback">Feedback</option>
+            <option value="question">Question</option>
+            <option value="technical-support">Technical Support</option>
+            <option value="other">Other</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="message">Your Message</label><br>
+          <textarea class="message" name="message" rows="6" cols="60" required></textarea>
+        </p>
+
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <nav aria-label="Footer navigation">
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="#support">Contact</a></li>
+      </ul>
+    </nav>
+    <p>&copy; 2024 GLOBAL ACADEMY</p>
+  </footer>
+</body>
+</html>
