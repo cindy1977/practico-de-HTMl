@@ -1,722 +1,407 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Academy | Learning Platform</title>
-
-    <style>
-        :root {
-            --navy: #152b52;
-            --purple: #6954bd;
-            --gold: #e8ac4d;
-            --background: #f1f3fb;
-            --border: #cbd3e5;
-            --white: #ffffff;
-            --text: #243047;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: var(--background);
-            color: var(--text);
-        }
-
-        /* HEADER */
-
-        .top-header {
-            background: white;
-            padding: 15px 25px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 23px;
-            font-weight: bold;
-            color: var(--navy);
-        }
-
-        .logo span {
-            color: var(--purple);
-        }
-
-        .search {
-            width: 40%;
-            padding: 11px 15px;
-            border: 1px solid var(--border);
-            border-radius: 25px;
-            background: #f5f6fc;
-        }
-
-        .header-icons {
-            font-size: 22px;
-            color: var(--navy);
-        }
-
-        /* NAVIGATION */
-
-        nav {
-            background: var(--navy);
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            font-size: 14px;
-        }
-
-        nav a:hover,
-        nav a.active {
-            background: var(--purple);
-        }
-
-        /* MAIN LAYOUT */
-
-        .layout {
-            display: grid;
-            grid-template-columns: 185px minmax(0, 1fr);
-            gap: 15px;
-            padding: 18px;
-            max-width: 1400px;
-            margin: auto;
-        }
-
-        .panel {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .panel-title {
-            background: var(--purple);
-            color: white;
-            padding: 12px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .orange-title {
-            background: var(--gold);
-            color: var(--navy);
-        }
-
-        /* QUICK ACCESS */
-
-        .sidebar {
-            align-self: start;
-        }
-
-        .quick-links {
-            padding: 10px;
-            display: grid;
-            gap: 12px;
-        }
-
-        .quick-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 58px;
-            padding: 10px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            text-decoration: none;
-            text-align: center;
-            color: var(--navy);
-            background: #f8f9ff;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .quick-links a:hover {
-            background: #eee9ff;
-            border-color: var(--purple);
-        }
-
-        /* CONTENT */
-
-        .content {
-            display: grid;
-            gap: 14px;
-            min-width: 0;
-        }
-
-        .welcome {
-            margin: 12px;
-            min-height: 175px;
-            border-radius: 7px;
-            background:
-                linear-gradient(
-                    110deg,
-                    rgba(21,43,82,.95),
-                    rgba(105,84,189,.80)
-                ),
-                url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200");
-            background-size: cover;
-            background-position: center;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .welcome h1 {
-            font-size: 27px;
-            margin: 0 0 10px;
-        }
-
-        .welcome p {
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        /* COURSE AND READING */
-
-        .information-grid {
-            display: grid;
-            grid-template-columns: 1.6fr 1fr;
-            gap: 14px;
-            align-items: stretch;
-        }
-
-        .table-container {
-            padding: 10px;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-
-        th {
-            background: var(--navy);
-            color: white;
-            padding: 11px 7px;
-            text-align: left;
-        }
-
-        td {
-            border: 1px solid var(--border);
-            padding: 10px 7px;
-            vertical-align: middle;
-        }
-
-        tbody tr:nth-child(even) {
-            background: #f2f0fc;
-        }
-
-        .status-complete {
-            background: #d9f0e2;
-            color: #195c35;
-        }
-
-        .status-success {
-            background: #dce6ff;
-            color: #254ba0;
-        }
-
-        .status-plan {
-            background: #fff0cf;
-            color: #8b5700;
-        }
-
-        /* RECOMMENDED READING */
-
-        .reading-list {
-            padding: 10px;
-            display: grid;
-            gap: 12px;
-        }
-
-        .reading-card {
-            border: 1px solid var(--border);
-            border-radius: 7px;
-            padding: 10px;
-            display: flex;
-            gap: 10px;
-            background: white;
-        }
-
-        .reading-card img {
-            width: 85px;
-            height: 85px;
-            object-fit: cover;
-            border-radius: 5px;
-            flex-shrink: 0;
-        }
-
-        .reading-card h3 {
-            font-size: 14px;
-            margin: 0 0 7px;
-            color: var(--navy);
-        }
-
-        .reading-card p {
-            font-size: 12px;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        /* FEEDBACK FORM */
-
-        .form-content {
-            padding: 18px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 7px;
-            font-size: 14px;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 11px;
-            border: 1px solid #aebbd1;
-            border-radius: 5px;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            background: white;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: 2px solid var(--purple);
-            outline-offset: 1px;
-        }
-
-        textarea {
-            height: 110px;
-            resize: vertical;
-        }
-
-        .send-btn {
-            background: var(--gold);
-            color: var(--navy);
-            border: none;
-            padding: 11px 30px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .send-btn:hover {
-            background: #f4c373;
-        }
-
-        /* FOOTER */
-
-        footer {
-            background: var(--navy);
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-            font-size: 13px;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* RESPONSIVE */
-
-        @media (max-width: 900px) {
-            .information-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 650px) {
-            .layout {
-                grid-template-columns: 1fr;
-            }
-
-            .quick-links {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .search {
-                width: 100%;
-            }
-
-            .top-header {
-                flex-wrap: wrap;
-            }
-
-            .reading-card img {
-                width: 75px;
-                height: 75px;
-            }
-        }
-    </style>
+    <title>Global Academy - Learning Platform</title>
 </head>
 
 <body>
 
-    <!-- HEADER -->
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header>
+        <table width="100%" border="0" cellpadding="10">
+            <tr>
+                <td width="30%">
+                    <h2>🌐 GLOBAL ACADEMY</h2>
+                </td>
 
-    <header class="top-header">
-        <div class="logo">
-            🌐 GLOBAL <span>ACADEMY</span>
-        </div>
+                <td width="45%">
+                    <input
+                        type="search"
+                        name="search"
+                        placeholder="Search..."
+                        aria-label="Search">
+                </td>
 
-        <input
-            class="search"
-            type="search"
-            placeholder="Search..."
-            aria-label="Search">
-
-        <div class="header-icons" aria-label="User menu">
-            ☷ &nbsp; ● &nbsp; ◉
-        </div>
+                <td align="right">
+                    &#9638; &nbsp; &#9679; &nbsp; &#9787;
+                </td>
+            </tr>
+        </table>
     </header>
 
-    <!-- NAVIGATION -->
+    <hr>
 
-    <nav aria-label="Main navigation">
-        <a href="#dashboard" class="active">DASHBOARD</a>
-        <a href="#courses">MY COURSES</a>
-        <a href="#resources">RESOURCES</a>
-        <a href="#community">COMMUNITY</a>
-        <a href="#support">HELP</a>
+    <!-- MENU DE NAVEGACION -->
+    <nav>
+        <table width="100%" cellpadding="10">
+            <tr align="center">
+                <td><a href="#dashboard">DASHBOARD</a></td>
+                <td><a href="#courses">MY COURSES</a></td>
+                <td><a href="#resources">RESOURCES</a></td>
+                <td><a href="#community">COMMUNITY</a></td>
+                <td><a href="#support">HELP</a></td>
+            </tr>
+        </table>
     </nav>
 
-    <!-- MAIN -->
+    <hr>
 
-    <main class="layout" id="dashboard">
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="dashboard">
 
-        <!-- SIDEBAR -->
+        <table width="100%" cellpadding="8">
+            <tr valign="top">
 
-        <aside class="panel sidebar">
-            <div class="panel-title">QUICK ACCESS</div>
+                <!-- MENU LATERAL -->
+                <td width="22%">
 
-            <div class="quick-links">
-                <a href="#announcements">Announcements</a>
-                <a href="#calendar">Calendar Events</a>
-                <a href="#grades">Grades</a>
-                <a href="#faculty">Faculty Directory</a>
-            </div>
-        </aside>
+                    <aside>
+                        <fieldset>
+                            <legend>
+                                <strong>QUICK ACCESS</strong>
+                            </legend>
 
-        <!-- CONTENT -->
+                            <p>
+                                <button type="button">
+                                    Announcements
+                                </button>
+                            </p>
 
-        <div class="content">
+                            <p>
+                                <button type="button">
+                                    Calendar Events
+                                </button>
+                            </p>
 
-            <!-- LEARNING HUB -->
+                            <p>
+                                <button type="button">
+                                    Grades
+                                </button>
+                            </p>
 
-            <section class="panel" id="community">
-                <div class="panel-title">LEARNING HUB</div>
+                            <p>
+                                <button type="button">
+                                    Faculty Directory
+                                </button>
+                            </p>
+                        </fieldset>
+                    </aside>
 
-                <div class="welcome">
-                    <h1>WELCOME BACK</h1>
-                    <p>
-                        Explore your learning journey,
-                        discover new opportunities and
-                        connect with your academic community.
-                    </p>
-                </div>
-            </section>
+                </td>
 
-            <!-- COURSES AND READING -->
+                <!-- CONTENIDO DERECHO -->
+                <td width="78%">
 
-            <div class="information-grid">
+                    <!-- LEARNING HUB -->
+                    <section id="community">
+                        <fieldset>
+                            <legend>
+                                <strong>LEARNING HUB</strong>
+                            </legend>
 
-                <section class="panel" id="courses">
-                    <div class="panel-title orange-title">
-                        COURSE SCHEDULE
-                    </div>
+                            <center>
+                                <h1>WELCOME BACK</h1>
 
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Module</th>
-                                    <th>Topic</th>
-                                    <th>Instructor</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td rowspan="3">Module 1</td>
-                                    <td>Learning & Professional Courses</td>
-                                    <td>John B.</td>
-                                    <td>8/12/2024</td>
-                                    <td class="status-complete">Complete</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Experimental Learning</td>
-                                    <td>Bernie M.</td>
-                                    <td>3/11/2024</td>
-                                    <td class="status-complete">Complete</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Summary Learning</td>
-                                    <td>Jim F.</td>
-                                    <td>1/12/2024</td>
-                                    <td class="status-complete">Complete</td>
-                                </tr>
-
-                                <tr>
-                                    <td rowspan="3">Module 2</td>
-                                    <td>Student Schedule</td>
-                                    <td>German S.</td>
-                                    <td>8/12/2024</td>
-                                    <td class="status-success">Success</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Developmental Learning</td>
-                                    <td>Flash C.</td>
-                                    <td>0/12/2024</td>
-                                    <td class="status-success">Success</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Social Learning & Communities</td>
-                                    <td>Mary W.</td>
-                                    <td>8/12/2024</td>
-                                    <td class="status-plan">Plan</td>
-                                </tr>
-
-                                <tr>
-                                    <td rowspan="3">Module 3</td>
-                                    <td>Student Learning</td>
-                                    <td>Mary W.</td>
-                                    <td>9/12/2024</td>
-                                    <td class="status-complete">Complete</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Complete Learning</td>
-                                    <td>German S.</td>
-                                    <td>0/12/2024</td>
-                                    <td class="status-success">Success</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Developmental Learning</td>
-                                    <td>Flash C.</td>
-                                    <td>9/13/2024</td>
-                                    <td class="status-plan">Plan</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <!-- READING -->
-
-                <section class="panel" id="resources">
-                    <div class="panel-title orange-title">
-                        RECOMMENDED READING
-                    </div>
-
-                    <div class="reading-list">
-
-                        <article class="reading-card">
-                            <img
-                                src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=300"
-                                alt="Books for learning">
-
-                            <div>
-                                <h3>Recommended Articles</h3>
                                 <p>
-                                    Explore useful academic
-                                    resources and improve
-                                    your learning experience.
+                                    Join your learning community,
+                                    discover new opportunities
+                                    and continue your education.
                                 </p>
-                            </div>
-                        </article>
+                            </center>
 
-                        <article class="reading-card">
-                            <img
-                                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=300"
-                                alt="Online education">
+                        </fieldset>
+                    </section>
 
-                            <div>
-                                <h3>Online Learning</h3>
+                    <br>
+
+                    <!-- CURSOS Y LECTURAS -->
+                    <table width="100%" cellpadding="5">
+                        <tr valign="top">
+
+                            <!-- COURSE SCHEDULE -->
+                            <td width="65%">
+
+                                <section id="courses">
+                                    <fieldset>
+                                        <legend>
+                                            <strong>
+                                                COURSE SCHEDULE
+                                            </strong>
+                                        </legend>
+
+                                        <table
+                                            border="1"
+                                            width="100%"
+                                            cellpadding="7"
+                                            cellspacing="0">
+
+                                            <thead>
+                                                <tr>
+                                                    <th>Module</th>
+                                                    <th>Topic</th>
+                                                    <th>Instructor</th>
+                                                    <th>Date</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td rowspan="3">Module 1</td>
+                                                    <td>Learning &amp; Professional Courses</td>
+                                                    <td>John B.</td>
+                                                    <td>8/12/2024</td>
+                                                    <td>Complete</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Experimental Learning</td>
+                                                    <td>Bernie M.</td>
+                                                    <td>3/11/2024</td>
+                                                    <td>Complete</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Summary Learning</td>
+                                                    <td>Jim F.</td>
+                                                    <td>1/12/2024</td>
+                                                    <td>Complete</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td rowspan="3">Module 2</td>
+                                                    <td>Student Schedule</td>
+                                                    <td>German S.</td>
+                                                    <td>8/12/2024</td>
+                                                    <td>Success</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Developmental Learning</td>
+                                                    <td>Flash C.</td>
+                                                    <td>0/12/2024</td>
+                                                    <td>Success</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Social Learning</td>
+                                                    <td>Mary W.</td>
+                                                    <td>8/12/2024</td>
+                                                    <td>Plan</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td rowspan="3">Module 3</td>
+                                                    <td>Student Learning</td>
+                                                    <td>Mary W.</td>
+                                                    <td>9/12/2024</td>
+                                                    <td>Complete</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Complete Learning</td>
+                                                    <td>German S.</td>
+                                                    <td>0/12/2024</td>
+                                                    <td>Success</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Developmental Learning</td>
+                                                    <td>Flash C.</td>
+                                                    <td>9/13/2024</td>
+                                                    <td>Plan</td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+
+                                    </fieldset>
+                                </section>
+
+                            </td>
+
+                            <!-- RECOMMENDED READING -->
+                            <td width="35%">
+
+                                <section id="resources">
+                                    <fieldset>
+                                        <legend>
+                                            <strong>
+                                                RECOMMENDED READING
+                                            </strong>
+                                        </legend>
+
+                                        <article>
+                                            <h4>Recommended Articles</h4>
+                                            <p>
+                                                Explore useful academic
+                                                articles and improve
+                                                your learning experience.
+                                            </p>
+                                        </article>
+
+                                        <hr>
+
+                                        <article>
+                                            <h4>Fast Fitting Becoming Articles</h4>
+                                            <p>
+                                                Discover new learning
+                                                techniques and useful
+                                                educational information.
+                                            </p>
+                                        </article>
+
+                                        <hr>
+
+                                        <article>
+                                            <h4>Recommended Articles</h4>
+                                            <p>
+                                                Find educational
+                                                resources and improve
+                                                your academic knowledge.
+                                            </p>
+                                        </article>
+
+                                    </fieldset>
+                                </section>
+
+                            </td>
+
+                        </tr>
+                    </table>
+
+                    <br>
+
+                    <!-- FORMULARIO DE SOPORTE -->
+                    <section id="support">
+
+                        <fieldset>
+                            <legend>
+                                <strong>
+                                    FEEDBACK &amp; SUPPORT
+                                </strong>
+                            </legend>
+
+                            <form action="#" method="get">
+
+                                <table width="100%" cellpadding="5">
+                                    <tr>
+                                        <td width="50%">
+                                            <label for="subject">
+                                                <strong>Subject</strong>
+                                            </label>
+                                        </td>
+
+                                        <td width="50%">
+                                            <label for="category">
+                                                <strong>Category</strong>
+                                            </label>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <input
+                                                type="text"
+                                                id="subject"
+                                                name="subject"
+                                                size="35"
+                                                placeholder="Enter subject"
+                                                required>
+                                        </td>
+
+                                        <td>
+                                            <select
+                                                id="category"
+                                                name="category"
+                                                required>
+
+                                                <option value="">
+                                                    Select Category
+                                                </option>
+
+                                                <option value="general">
+                                                    General Inquiry
+                                                </option>
+
+                                                <option value="technical">
+                                                    Technical Support
+                                                </option>
+
+                                                <option value="academic">
+                                                    Academic Question
+                                                </option>
+
+                                                <option value="feedback">
+                                                    Feedback
+                                                </option>
+
+                                                <option value="other">
+                                                    Other
+                                                </option>
+
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+
                                 <p>
-                                    Discover new methods
-                                    to develop your skills
-                                    and academic knowledge.
+                                    <label for="message">
+                                        <strong>Your Message</strong>
+                                    </label>
                                 </p>
-                            </div>
-                        </article>
 
-                        <article class="reading-card">
-                            <img
-                                src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=300"
-                                alt="Study materials">
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="6"
+                                    cols="75"
+                                    placeholder="Write your message here..."
+                                    required></textarea>
 
-                            <div>
-                                <h3>Study Resources</h3>
                                 <p>
-                                    Access helpful reading
-                                    materials and educational
-                                    recommendations.
+                                    <button type="submit">
+                                        Send
+                                    </button>
                                 </p>
-                            </div>
-                        </article>
 
-                    </div>
-                </section>
+                            </form>
 
-            </div>
+                        </fieldset>
 
-            <!-- FEEDBACK AND SUPPORT -->
+                    </section>
 
-            <section class="panel" id="support">
-                <div class="panel-title">
-                    FEEDBACK & SUPPORT
-                </div>
+                </td>
+            </tr>
+        </table>
 
-                <div class="form-content">
-
-                    <form action="#" method="get">
-
-                        <div class="form-row">
-
-                            <div class="form-group">
-                                <label for="subject">
-                                    Subject
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="subject"
-                                    name="subject"
-                                    required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="category">
-                                    Category
-                                </label>
-
-                                <select
-                                    id="category"
-                                    name="category"
-                                    required>
-
-                                    <option value="" selected disabled>
-                                        Select Category
-                                    </option>
-
-                                    <option value="general">
-                                        General Inquiry
-                                    </option>
-
-                                    <option value="technical">
-                                        Technical Support
-                                    </option>
-
-                                    <option value="academic">
-                                        Academic Question
-                                    </option>
-
-                                    <option value="feedback">
-                                        Feedback
-                                    </option>
-
-                                    <option value="other">
-                                        Other
-                                    </option>
-
-                                </select>
-                            </div>
-
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">
-                                Your Message
-                            </label>
-
-                            <textarea
-                                id="message"
-                                name="message"
-                                required></textarea>
-                        </div>
-
-                        <button
-                            type="submit"
-                            class="send-btn">
-                            Send
-                        </button>
-
-                    </form>
-
-                </div>
-            </section>
-
-        </div>
     </main>
 
-    <!-- FOOTER -->
+    <hr>
 
+    <!-- PIE DE PAGINA -->
     <footer>
-        <div>
-            <a href="#about">About Us</a>
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Use</a>
-            <a href="#support">Contact</a>
-        </div>
+        <table width="100%" cellpadding="10">
+            <tr>
+                <td>
+                    <a href="#about">About Us</a>
+                    &nbsp; | &nbsp;
+                    <a href="#privacy">Privacy Policy</a>
+                    &nbsp; | &nbsp;
+                    <a href="#terms">Terms of Use</a>
+                    &nbsp; | &nbsp;
+                    <a href="#support">Contact</a>
+                </td>
 
-        <div>
-            &copy; 2026 GLOBAL ACADEMY
-        </div>
+                <td align="right">
+                    &copy; 2026 GLOBAL ACADEMY
+                </td>
+            </tr>
+        </table>
     </footer>
 
 </body>
