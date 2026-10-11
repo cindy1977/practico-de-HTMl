@@ -1,0 +1,115 @@
+<!-- Diego Álvarez 8-1002-324 -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Soporte Educativo</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Soporte Educativo</h1>
+        <p>Estamos aquí para ayudarte con tus consultas y solicitudes.</p>
+        <hr>
+    </header>
+
+    <main>
+
+        <section>
+            <h2>Formulario de Soporte</h2>
+            <hr>
+
+            <p>
+                Completa el siguiente formulario para enviarnos tus
+                comentarios, consultas o solicitudes de soporte.
+            </p>
+
+            <form action="#" method="post">
+
+                <fieldset>
+                    <legend>Formulario de contacto</legend>
+
+                    <p>
+                        <label for="subject">
+                            <strong>Subject:</strong>
+                        </label>
+                        <br>
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            placeholder="Escriba la materia en cuestión"
+                            size="50"
+                            required
+                        >
+                    </p>
+
+                    <hr>
+
+                    <p>
+                        <label for="category">
+                            <strong>Category:</strong>
+                        </label>
+                        <br>
+                        <select
+                            id="category"
+                            name="category"
+                            required
+                        >
+                            <option value="">Selecciona una categoría</option>
+                            <option value="consulta">Ejemplo</option>
+                            <option value="soporte">De</option>
+                            <option value="comentario">Lista</option>
+                            <option value="problema">Dropdown</option>
+                        </select>
+                    </p>
+
+                    <hr>
+
+                    <p>
+                        <label for="message">
+                            <strong>Your Message:</strong>
+                        </label>
+                        <br>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="7"
+                            cols="50"
+                            placeholder="Escribe tu mensaje aquí..."
+                            required
+                        ></textarea>
+                    </p>
+
+                    <hr>
+
+                    <p>
+                        <button type="submit">Send</button>
+                    </p>
+
+                </fieldset>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>
+            <small>
+                &copy; 2026 Soporte Educativo.
+                Todos los derechos reservados.
+                Desarrollo De Software V :p
+            </small>
+        </p>
+    </footer>
+
+</body>
+
+</html>
